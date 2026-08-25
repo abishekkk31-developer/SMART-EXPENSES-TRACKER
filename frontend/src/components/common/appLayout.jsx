@@ -1,5 +1,5 @@
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import Navbar from "./navbar";
+import Sidebar from "./sidebar";
 
 function AppLayout({ children }) {
   return (

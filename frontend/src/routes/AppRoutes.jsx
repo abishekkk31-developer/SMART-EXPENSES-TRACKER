@@ -3,14 +3,14 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
-import DashboardOverview from "../components/dashboard/DashboardOverview";
-import AppLayout from "../components/common/AppLayout";
+import DashboardOverview from "../components/dashboard/dashboardOverview";
+import AppLayout from "../components/common/appLayout";
 
 import Expenses from "../pages/Expenses";
 import Budget from "../pages/Budget";
 import Reports from "../pages/Reports";
 import Profile from "../pages/Profile";
-import Settings from "../pages/Settings";
+import Settings from "../pages/settings";
 
 import PrivateRoute from "./PrivateRoute";
 
