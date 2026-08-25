@@ -39,13 +39,12 @@ public class SecurityConfig {
                 new CorsConfiguration();
 
         configuration.setAllowedOrigins(
-                List.of(
-                        "http://localhost:5173",
-                        "http://localhost:4173",
-
-                        "https://smart-expenses-tracker-git-main-abi-a3fc.vercel.app"
-                )
-        );
+        List.of(
+                "http://localhost:5173",
+                "http://localhost:4173",
+                "https://smart-expenses-tracker-frfapq4bz-abi-a3fc.vercel.app"
+        )
+);
 
         configuration.setAllowedMethods(
                 List.of(
