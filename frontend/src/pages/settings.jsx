@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import {
-  settings as settingsIcon,
+  Settings as SettingsIcon,
   Bell,
   Wallet,
   Moon,
