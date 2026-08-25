@@ -6,7 +6,7 @@ import {
   getExpenses,
   updateExpense,
   deleteExpense,
-} from "../api/expenseApi";
+} from "../api/expenseapi";
 
 import {
   Plus,

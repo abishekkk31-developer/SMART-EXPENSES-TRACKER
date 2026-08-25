@@ -14,7 +14,7 @@ import {
   getProfile,
   updateProfile,
   changePassword,
-} from "../api/userApi";
+} from "../api/userapi";
 
 import { useAuth } from "../context/AuthContext";
 

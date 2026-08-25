@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import { useAuth } from "../../context/AuthContext";
-import { getExpenses } from "../../api/expenseApi";
+import { getExpenses } from "../../api/expenseapi";
 import { formatCurrency } from "../../utils/currency";
 
 import AddExpenseModal from "../expenses/AddExpenseModal";

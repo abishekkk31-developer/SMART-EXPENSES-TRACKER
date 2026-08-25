@@ -13,7 +13,7 @@ import {
   MoreVertical,
 } from "lucide-react";
 
-import { getExpenses } from "../api/expenseApi";
+import { getExpenses } from "../api/expenseapi";
 
 import "../styles/reports.css";
 
