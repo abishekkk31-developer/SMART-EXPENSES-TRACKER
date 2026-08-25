@@ -23,7 +23,7 @@ import AddExpenseModal from "../components/expenses/AddExpenseModal";
 import DeleteExpenseModal from "../components/expenses/DeleteExpenseModal";
 import EditExpenseModal from "../components/expenses/EditExpenseModal";
 
-import "../styles/expenses.css";
+import "../styles/Expenses.css";
 
 function Expenses() {
   // ==========================================
