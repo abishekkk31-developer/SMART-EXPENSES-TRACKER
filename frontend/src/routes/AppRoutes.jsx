@@ -17,8 +17,6 @@ import PrivateRoute from "./PrivateRoute";
 function AppRoutes() {
   return (
     <Routes>
-      {/* PUBLIC ROUTES */}
-
       <Route path="/" element={<Login />} />
 
       <Route
@@ -26,10 +24,7 @@ function AppRoutes() {
         element={<Register />}
       />
 
-      {/* PROTECTED ROUTES */}
-
       <Route element={<PrivateRoute />}>
-
         <Route
           path="/dashboard"
           element={
@@ -75,8 +70,6 @@ function AppRoutes() {
           }
         />
 
-        {/* SETTINGS */}
-
         <Route
           path="/settings"
           element={
@@ -85,21 +78,12 @@ function AppRoutes() {
             </AppLayout>
           }
         />
-
       </Route>
-
-      {/* UNKNOWN ROUTE */}
 
       <Route
         path="*"
-        element={
-          <Navigate
-            to="/"
-            replace
-          />
-        }
+        element={<Navigate to="/" replace />}
       />
-
     </Routes>
   );
 }
