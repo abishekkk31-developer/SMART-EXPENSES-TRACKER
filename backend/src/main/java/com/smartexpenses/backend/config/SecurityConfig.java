@@ -1,5 +1,7 @@
 package com.s.backend.config;
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -10,6 +12,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
 public class SecurityConfig {
@@ -19,8 +23,7 @@ public class SecurityConfig {
     public SecurityConfig(
             JwtAuthenticationFilter jwtAuthenticationFilter
     ) {
-        this.jwtAuthenticationFilter =
-                jwtAuthenticationFilter;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     @Bean
@@ -28,45 +31,57 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-   @Bean
-public CorsConfigurationSource corsConfigurationSource() {
+    // ==========================================
+    // CORS CONFIGURATION
+    // ==========================================
 
-    CorsConfiguration configuration = new CorsConfiguration();
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
 
-    configuration.setAllowedOriginPatterns(
-            List.of(
-                    "http://localhost:5173",
-                    "http://localhost:4173",
-                    "https://*.vercel.app"
-            )
-    );
+        CorsConfiguration configuration =
+                new CorsConfiguration();
 
-    configuration.setAllowedMethods(
-            List.of(
-                    "GET",
-                    "POST",
-                    "PUT",
-                    "DELETE",
-                    "OPTIONS"
-            )
-    );
+        // Allow localhost and ALL Vercel deployments
+        configuration.setAllowedOriginPatterns(
+                List.of(
+                        "http://localhost:5173",
+                        "http://localhost:4173",
+                        "https://*.vercel.app"
+                )
+        );
 
-    configuration.setAllowedHeaders(
-            List.of("*")
-    );
+        configuration.setAllowedMethods(
+                List.of(
+                        "GET",
+                        "POST",
+                        "PUT",
+                        "DELETE",
+                        "OPTIONS"
+                )
+        );
 
-    configuration.setAllowCredentials(true);
+        configuration.setAllowedHeaders(
+                List.of("*")
+        );
 
-    UrlBasedCorsConfigurationSource source =
-            new UrlBasedCorsConfigurationSource();
+        configuration.setAllowCredentials(true);
 
-    source.registerCorsConfiguration(
-            "/**",
-            configuration
-    );
+        configuration.setMaxAge(3600L);
 
-    return source;
-}
+        UrlBasedCorsConfigurationSource source =
+                new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration(
+                "/**",
+                configuration
+        );
+
+        return source;
+    }
+
+    // ==========================================
+    // SECURITY
+    // ==========================================
 
     @Bean
     public SecurityFilterChain securityFilterChain(
@@ -86,14 +101,16 @@ public CorsConfigurationSource corsConfigurationSource() {
 
             .authorizeHttpRequests(auth -> auth
 
+                // Allow ALL preflight requests
                 .requestMatchers(
                         HttpMethod.OPTIONS,
                         "/**"
                 ).permitAll()
 
+                // Public authentication endpoints
                 .requestMatchers(
-                        "/api/auth/register",
-                        "/api/auth/login"
+                        "/api/auth/login",
+                        "/api/auth/register"
                 ).permitAll()
 
                 .anyRequest()
