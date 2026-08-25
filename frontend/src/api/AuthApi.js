@@ -24,7 +24,7 @@ API.interceptors.request.use((config) => {
 
 export const loginUser = async (loginData) => {
   const response = await API.post(
-    "/auth/login",
+    "/api/auth/login",
     loginData
   );
 
@@ -37,7 +37,7 @@ export const loginUser = async (loginData) => {
 
 export const registerUser = async (registerData) => {
   const response = await API.post(
-    "/auth/register",
+    "/api/auth/register",
     registerData
   );
 
