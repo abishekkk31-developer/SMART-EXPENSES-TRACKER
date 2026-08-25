@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { X } from "lucide-react";
 
-import { addExpense } from "../../api/expenseApi";
+import { addExpense } from "../../api/expenseapi";
 
 function AddExpenseModal({
   onClose,
