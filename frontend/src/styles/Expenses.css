@@ -1,0 +1,1668 @@
+/* =========================================
+   SMART EXPENSE TRACKER - EXPENSES PAGE
+========================================= */
+
+.expenses-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.expenses-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.expenses-page-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.expenses-page-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================
+   ADD BUTTON
+========================================= */
+
+.expenses-add-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-width: 132px;
+  min-height: 42px;
+
+  padding: 0 17px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #2563eb;
+  color: #ffffff !important;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.expenses-add-button:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.expenses-add-button span {
+  color: #ffffff !important;
+}
+
+/* =========================================
+   TOOLBAR
+========================================= */
+
+.expenses-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.expenses-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  width: 100%;
+  max-width: 420px;
+
+  height: 46px;
+  padding: 0 14px;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  color: #94a3b8;
+}
+
+.expenses-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #0f172a;
+
+  font-size: 14px;
+}
+
+.expenses-search input::placeholder {
+  color: #94a3b8;
+}
+
+/* =========================================
+   CATEGORY FILTER
+========================================= */
+
+.expenses-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 46px;
+  padding: 0 12px;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+
+  color: #64748b;
+}
+
+.expenses-filter-wrapper select {
+  min-width: 130px;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #475569;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+.expenses-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
+
+  margin-bottom: 22px;
+}
+
+.expense-summary-item {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  padding: 20px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.expense-summary-item span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.expense-summary-item strong {
+  color: #0f172a;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* =========================================
+   EXPENSE CONTAINER
+========================================= */
+
+.expenses-container {
+  width: 100%;
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+/* =========================================
+   CONTAINER HEADER
+========================================= */
+
+.expenses-container-header {
+  padding: 22px;
+
+  border-bottom:
+    1px solid #e2e8f0;
+}
+
+.expenses-container-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.expenses-container-header p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.expense-table-header {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 1fr)
+    150px
+    150px
+    110px;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 13px 22px;
+
+  background: #f8fafc;
+
+  border-bottom:
+    1px solid #e2e8f0;
+
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* =========================================
+   EXPENSE ROW
+========================================= */
+
+.expense-table-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(250px, 1fr)
+    150px
+    150px
+    110px;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 17px 22px;
+
+  border-bottom:
+    1px solid #f1f5f9;
+}
+
+.expense-table-row:last-child {
+  border-bottom: none;
+}
+
+.expense-table-row:hover {
+  background: #fafcff;
+}
+
+/* =========================================
+   EXPENSE INFO
+========================================= */
+
+.expense-table-info {
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  min-width: 0;
+}
+
+.expense-table-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.expense-table-info h3 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.expense-table-info p {
+  margin: 4px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   DATE
+========================================= */
+
+.expense-date {
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.expense-table-amount {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 1px;
+
+  color: #0f172a;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.expense-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 4px;
+}
+
+.expense-edit-button {
+  border: none;
+
+  background: transparent;
+
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  padding: 7px 8px;
+
+  border-radius: 6px;
+}
+
+.expense-edit-button:hover {
+  background: #eff6ff;
+}
+
+.expense-menu-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  cursor: pointer;
+}
+
+.expense-menu-button:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* =========================================
+   EMPTY / LOADING
+========================================= */
+
+.no-expenses {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 180px;
+
+  padding: 30px;
+
+  text-align: center;
+}
+
+.no-expenses h3 {
+  margin-top: 10px;
+
+  color: #0f172a;
+
+  font-size: 16px;
+}
+
+.no-expenses p {
+  margin-top: 6px;
+
+  color: #94a3b8;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   ADD EXPENSE MODAL
+========================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(15, 23, 42, 0.65);
+
+  backdrop-filter: blur(4px);
+}
+
+.expense-modal {
+  width: 100%;
+  max-width: 500px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+}
+
+/* =========================================
+   ADD MODAL HEADER
+========================================= */
+
+.expense-modal .modal-header {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  padding: 28px 30px 22px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+.expense-modal .modal-header h2 {
+  margin: 0 0 6px;
+
+  color: #1e293b;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.expense-modal .modal-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.expense-modal .close-button {
+  border: none;
+
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px;
+}
+
+.expense-modal .close-button:hover {
+  color: #1e293b;
+}
+
+/* =========================================
+   ADD MODAL FORM
+========================================= */
+
+.expense-modal form {
+  padding: 26px 30px 24px;
+}
+
+.expense-modal .input-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.expense-modal .input-group label {
+  font-size: 14px;
+
+  font-weight: 500;
+
+  color: #475569;
+}
+
+.expense-modal .input-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  height: 52px;
+
+  padding: 0 14px;
+
+  gap: 10px;
+
+  background: #ffffff;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+}
+
+.expense-modal .input-wrapper:focus-within {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+.expense-modal .input-wrapper span {
+  flex-shrink: 0;
+
+  color: #64748b;
+
+  font-size: 16px;
+}
+
+.expense-modal input,
+.expense-modal select {
+  width: 100%;
+  height: 52px;
+
+  padding: 0 14px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+}
+
+.expense-modal .input-wrapper input {
+  height: auto;
+
+  padding: 0;
+
+  border: none;
+
+  box-shadow: none;
+
+  background: transparent;
+}
+
+.expense-modal input:focus,
+.expense-modal select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+/* =========================================
+   ADD MODAL BUTTONS
+========================================= */
+
+.expense-modal .modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 26px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid #e5e7eb;
+}
+
+.expense-modal .cancel-button {
+  height: 44px;
+
+  padding: 0 20px;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 9px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.expense-modal .cancel-button:hover {
+  background: #f8fafc;
+}
+
+.expense-modal .add-expense-button {
+  min-width: 132px;
+
+  height: 44px;
+
+  padding: 0 22px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #2563eb;
+
+  color: #ffffff !important;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+.expense-modal .add-expense-button span {
+  color: #ffffff !important;
+}
+
+.expense-modal .add-expense-button:hover {
+  background: #1d4ed8;
+}
+
+.expense-modal .add-expense-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.expense-modal .auth-error {
+  margin: 20px 30px 0;
+
+  padding: 12px;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+}
+
+/* =========================================
+   DELETE MODAL
+========================================= */
+
+.delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 1100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(15, 23, 42, 0.55);
+}
+
+.delete-modal {
+  width: 100%;
+  max-width: 430px;
+
+  background: #ffffff;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 50px
+    rgba(15, 23, 42, 0.2);
+
+  overflow: hidden;
+}
+
+.delete-modal-header {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 22px 22px 0;
+}
+
+.delete-warning-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.delete-modal-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  cursor: pointer;
+}
+
+.delete-modal-close:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.delete-modal-content {
+  padding: 20px 22px;
+}
+
+.delete-modal-content h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.delete-modal-content > p {
+  margin: 8px 0 18px;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+}
+
+.delete-expense-preview {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 14px;
+
+  background: #f8fafc;
+
+  border:
+    1px solid #e2e8f0;
+
+  border-radius: 10px;
+}
+
+.delete-expense-preview div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  min-width: 0;
+}
+
+.delete-expense-preview div strong {
+  color: #0f172a;
+
+  font-size: 14px;
+}
+
+.delete-expense-preview div span {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+.delete-expense-preview > strong {
+  flex-shrink: 0;
+
+  color: #0f172a;
+
+  font-size: 14px;
+}
+
+.delete-modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  padding: 18px 22px;
+
+  border-top:
+    1px solid #e2e8f0;
+}
+
+.delete-cancel-button,
+.delete-confirm-button {
+  height: 40px;
+
+  padding: 0 16px;
+
+  border-radius: 8px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.delete-cancel-button {
+  border:
+    1px solid #cbd5e1;
+
+  background: #ffffff;
+
+  color: #475569;
+}
+
+.delete-cancel-button:hover {
+  background: #f8fafc;
+}
+
+.delete-confirm-button {
+  border:
+    1px solid #dc2626;
+
+  background: #dc2626;
+
+  color: #ffffff;
+}
+
+.delete-confirm-button:hover {
+  background: #b91c1c;
+}
+
+/* =========================================
+   EDIT MODAL
+========================================= */
+
+.edit-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background:
+    rgba(15, 23, 42, 0.55);
+
+  backdrop-filter: blur(3px);
+}
+
+.edit-expense-modal {
+  width: 100%;
+  max-width: 500px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 25px 60px
+    rgba(15, 23, 42, 0.25);
+
+  overflow: hidden;
+}
+
+.edit-modal-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  padding: 28px 30px 22px;
+
+  border-bottom:
+    1px solid #e5e7eb;
+}
+
+.edit-modal-header h2 {
+  margin: 0 0 6px;
+
+  color: #1e293b;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.edit-modal-header p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.edit-close-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+}
+
+.edit-close-button:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+}
+
+.edit-expense-modal form {
+  padding: 26px 30px 24px;
+}
+
+.edit-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-bottom: 20px;
+}
+
+.edit-form-group label {
+  color: #475569;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+.edit-form-group input,
+.edit-form-group select {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 14px;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #1e293b;
+
+  font-family: inherit;
+
+  font-size: 15px;
+}
+
+.edit-form-group input:focus,
+.edit-form-group select:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+.edit-input-wrapper {
+  display: flex;
+
+  align-items: center;
+
+  height: 48px;
+
+  padding: 0 14px;
+
+  gap: 10px;
+
+  border:
+    1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.edit-input-wrapper:focus-within {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(37, 99, 235, 0.1);
+}
+
+.edit-input-wrapper span {
+  color: #64748b;
+
+  font-size: 16px;
+}
+
+.edit-input-wrapper input {
+  width: 100%;
+
+  height: 100%;
+
+  padding: 0;
+
+  border: none;
+
+  outline: none;
+
+  box-shadow: none;
+
+  background: transparent;
+}
+
+.edit-modal-actions {
+  display: flex;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  margin-top: 26px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid #e5e7eb;
+}
+
+.edit-cancel-button,
+.edit-save-button {
+  height: 44px;
+
+  padding: 0 20px;
+
+  border-radius: 9px;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.edit-cancel-button {
+  border:
+    1px solid #cbd5e1;
+
+  background: #ffffff;
+
+  color: #475569;
+}
+
+.edit-cancel-button:hover {
+  background: #f8fafc;
+}
+
+.edit-save-button {
+  border: none;
+
+  background: #2563eb;
+
+  color: #ffffff;
+}
+
+.edit-save-button:hover {
+  background: #1d4ed8;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+[data-theme="dark"] .expenses-page-header h1 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expenses-page-header p {
+  color: #94a3b8;
+}
+
+/* TOOLBAR */
+
+[data-theme="dark"] .expenses-search,
+[data-theme="dark"] .expenses-filter-wrapper {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .expenses-search input {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expenses-filter-wrapper select {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .expenses-filter-wrapper select option {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+/* SUMMARY */
+
+[data-theme="dark"] .expense-summary-item {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .expense-summary-item span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-summary-item strong {
+  color: #f8fafc;
+}
+
+/* MAIN CONTAINER */
+
+[data-theme="dark"] .expenses-container {
+  background: #1e293b;
+  border-color: #334155;
+
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="dark"] .expenses-container-header {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .expenses-container-header h2 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expenses-container-header p {
+  color: #94a3b8;
+}
+
+/* TABLE HEADER */
+
+[data-theme="dark"] .expense-table-header {
+  background: #202c3f;
+  border-bottom-color: #334155;
+  color: #94a3b8;
+}
+
+/* TABLE ROW */
+
+[data-theme="dark"] .expense-table-row {
+  background: #1e293b;
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .expense-table-row:hover {
+  background: #263244;
+}
+
+[data-theme="dark"] .expense-table-info h3 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-table-info p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-date {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-table-amount {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-edit-button {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .expense-edit-button:hover {
+  background: #1e3a5f;
+}
+
+[data-theme="dark"] .expense-menu-button {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-menu-button:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+
+/* EMPTY */
+
+[data-theme="dark"] .no-expenses h3 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .no-expenses p {
+  color: #94a3b8;
+}
+
+/* ADD MODAL */
+
+[data-theme="dark"] .expense-modal {
+  background: #1e293b;
+
+  border-color: #334155;
+}
+
+[data-theme="dark"] .expense-modal .modal-header {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .expense-modal .modal-header h2 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-modal .modal-header p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-modal .close-button {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-modal .close-button:hover {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-modal .input-group label {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .expense-modal .input-wrapper,
+[data-theme="dark"] .expense-modal input,
+[data-theme="dark"] .expense-modal select {
+  background: #0f172a;
+
+  border-color: #475569;
+
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-modal .input-wrapper span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .expense-modal input::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .expense-modal select option {
+  background: #0f172a;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .expense-modal .modal-actions {
+  border-top-color: #334155;
+}
+
+[data-theme="dark"] .expense-modal .cancel-button {
+  background: #1e293b;
+
+  border-color: #475569;
+
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .expense-modal .cancel-button:hover {
+  background: #334155;
+}
+
+[data-theme="dark"] .expense-modal .add-expense-button,
+[data-theme="dark"] .expense-modal .add-expense-button span {
+  color: #ffffff !important;
+}
+
+/* DELETE MODAL */
+
+[data-theme="dark"] .delete-modal {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .delete-modal-content h2 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .delete-modal-content > p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .delete-expense-preview {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .delete-expense-preview div strong,
+[data-theme="dark"] .delete-expense-preview > strong {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .delete-expense-preview div span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .delete-modal-actions {
+  border-top-color: #334155;
+}
+
+[data-theme="dark"] .delete-cancel-button {
+  background: #1e293b;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .delete-cancel-button:hover {
+  background: #334155;
+}
+
+/* EDIT MODAL */
+
+[data-theme="dark"] .edit-expense-modal {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .edit-modal-header {
+  border-bottom-color: #334155;
+}
+
+[data-theme="dark"] .edit-modal-header h2 {
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .edit-modal-header p {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .edit-close-button {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .edit-close-button:hover {
+  background: #334155;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .edit-form-group label {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .edit-form-group input,
+[data-theme="dark"] .edit-form-group select,
+[data-theme="dark"] .edit-input-wrapper {
+  background: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .edit-form-group input::placeholder {
+  color: #64748b;
+}
+
+[data-theme="dark"] .edit-input-wrapper span {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .edit-modal-actions {
+  border-top-color: #334155;
+}
+
+[data-theme="dark"] .edit-cancel-button {
+  background: #1e293b;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .edit-cancel-button:hover {
+  background: #334155;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .expenses-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-table-header {
+    display: none;
+  }
+
+  .expense-table-row {
+    grid-template-columns:
+      1fr
+      auto
+      auto;
+
+    gap: 12px;
+  }
+
+  .expense-date {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .expenses-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .expenses-add-button {
+    width: auto;
+    min-width: 132px;
+  }
+
+  .expenses-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .expenses-search {
+    max-width: none;
+  }
+
+  .expenses-filter-wrapper {
+    width: 100%;
+  }
+
+  .expenses-filter-wrapper select {
+    width: 100%;
+  }
+
+  .expense-table-row {
+    grid-template-columns: 1fr auto;
+  }
+
+  .expense-table-amount {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .expense-menu-button {
+    display: none;
+  }
+
+  .expense-modal {
+    max-width: 100%;
+  }
+
+  .expense-modal .modal-header {
+    padding: 22px 20px 18px;
+  }
+
+  .expense-modal form {
+    padding: 22px 20px;
+  }
+
+  .delete-modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .delete-modal {
+    max-width: none;
+
+    border-radius:
+      18px 18px 0 0;
+  }
+
+  .delete-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .delete-cancel-button,
+  .delete-confirm-button {
+    width: 100%;
+  }
+
+  .edit-modal-overlay {
+    align-items: flex-end;
+
+    padding: 0;
+  }
+
+  .edit-expense-modal {
+    max-width: none;
+
+    border-radius:
+      18px 18px 0 0;
+  }
+
+  .edit-modal-header {
+    padding: 22px 20px 18px;
+  }
+
+  .edit-expense-modal form {
+    padding: 22px 20px;
+  }
+
+  .edit-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .edit-cancel-button,
+  .edit-save-button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,360 @@
+/* =========================================
+   SMART EXPENSE TRACKER
+   REPORTS PAGE
+========================================= */
+
+.reports-page {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.reports-header {
+  margin-bottom: 28px;
+}
+
+.reports-header h1 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.reports-header p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.report-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.report-card {
+  min-height: 170px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.report-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 15px;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.report-card span {
+  display: block;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.report-card strong {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #0f172a;
+
+  font-size: 21px;
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+.report-card small {
+  display: block;
+
+  margin-top: 7px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* =========================================
+   CATEGORY REPORT CONTAINER
+========================================= */
+
+.reports-container {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.reports-container-header {
+  padding: 22px;
+
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.reports-container-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.reports-container-header p {
+  margin: 6px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+/* =========================================
+   CATEGORY LIST
+========================================= */
+
+.category-report-list {
+  width: 100%;
+}
+
+.category-report-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(200px, 1fr)
+    minmax(250px, 1.5fr);
+
+  gap: 30px;
+
+  align-items: center;
+
+  padding: 20px 22px;
+
+  border-bottom: 1px solid #f1f5f9;
+
+  transition: background 0.2s ease;
+}
+
+.category-report-row:hover {
+  background: #f8fafc;
+}
+
+.category-report-row:last-child {
+  border-bottom: none;
+}
+
+/* =========================================
+   CATEGORY INFO
+========================================= */
+
+.category-report-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.category-report-icon {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.category-report-info h3 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category-report-info p {
+  margin: 4px 0 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+}
+
+/* =========================================
+   CATEGORY PROGRESS
+========================================= */
+
+.category-report-progress {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  min-width: 0;
+}
+
+.report-progress-track {
+  flex: 1;
+
+  height: 8px;
+
+  overflow: hidden;
+
+  background: #e2e8f0;
+
+  border-radius: 999px;
+}
+
+.report-progress-fill {
+  height: 100%;
+
+  min-width: 0;
+
+  background: #2563eb;
+
+  border-radius: inherit;
+
+  transition: width 0.4s ease;
+}
+
+.category-report-progress span {
+  width: 38px;
+
+  flex-shrink: 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: right;
+}
+
+/* =========================================
+   EMPTY / LOADING / ERROR
+========================================= */
+
+.no-report-data {
+  padding: 40px 22px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 14px;
+}
+
+.report-error {
+  color: #dc2626;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1200px) {
+  .report-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .reports-header h1 {
+    font-size: 26px;
+  }
+
+  .report-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .report-card {
+    min-height: auto;
+  }
+
+  .category-report-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    padding: 18px;
+  }
+
+  .reports-container-header {
+    padding: 20px 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  .reports-header {
+    margin-bottom: 22px;
+  }
+
+  .reports-header h1 {
+    font-size: 24px;
+  }
+
+  .report-card {
+    padding: 18px;
+  }
+
+  .report-card strong {
+    font-size: 20px;
+  }
+
+  .category-report-progress {
+    gap: 10px;
+  }
+
+  .no-report-data {
+    padding: 30px 16px;
+  }
+}
