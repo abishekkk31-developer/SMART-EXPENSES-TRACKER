@@ -27,18 +27,10 @@ public class SecurityConfig {
                 jwtAuthenticationFilter;
     }
 
-    // ==========================================
-    // PASSWORD ENCODER
-    // ==========================================
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    // ==========================================
-    // CORS
-    // ==========================================
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
@@ -49,7 +41,9 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(
                 List.of(
                         "http://localhost:5173",
-                        "http://localhost:4173"
+                        "http://localhost:4173",
+
+                        "https://smart-expenses-tracker-git-main-abi-a3fc.vercel.app"
                 )
         );
 
@@ -64,10 +58,7 @@ public class SecurityConfig {
         );
 
         configuration.setAllowedHeaders(
-                List.of(
-                        "Authorization",
-                        "Content-Type"
-                )
+                List.of("*")
         );
 
         configuration.setAllowCredentials(true);
@@ -83,19 +74,13 @@ public class SecurityConfig {
         return source;
     }
 
-    // ==========================================
-    // SECURITY
-    // ==========================================
-
     @Bean
     public SecurityFilterChain securityFilterChain(
             HttpSecurity http
     ) throws Exception {
 
         http
-            .csrf(csrf ->
-                    csrf.disable()
-            )
+            .csrf(csrf -> csrf.disable())
 
             .cors(cors -> {})
 
