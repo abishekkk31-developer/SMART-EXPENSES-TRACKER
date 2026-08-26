@@ -23,14 +23,14 @@
 
 .budget-page-header h1 {
   margin: 0;
-  color: #1e293b;
+  color: #1e293b !important;
   font-size: 28px;
   font-weight: 700;
 }
 
 .budget-page-header p {
   margin: 6px 0 0;
-  color: #64748b;
+  color: #64748b !important;
   font-size: 14px;
 }
 
@@ -43,7 +43,7 @@
   border: none;
   border-radius: 9px;
   background: #2563eb;
-  color: #ffffff;
+  color: #ffffff !important;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
@@ -71,7 +71,7 @@
   align-items: center;
   gap: 14px;
   padding: 20px;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid #dbe3ee;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -107,19 +107,29 @@
   gap: 5px;
 }
 
+/* CARD LABEL */
+
 .budget-overview-card span {
-  color: #64748b !important;
+  color: #475569 !important;
   font-size: 13px;
-}
-
-/* THIS FIXES YOUR HIDDEN NUMBERS */
-
-.budget-overview-card strong {
-  color: #1e293b !important;
-  font-size: 20px;
-  font-weight: 700;
   opacity: 1 !important;
   visibility: visible !important;
+}
+
+/* CARD NUMBER - IMPORTANT FIX */
+
+.budget-page .budget-overview-card strong,
+.budget-overview-grid .budget-overview-card strong,
+.budget-overview-card strong {
+  display: block !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+  text-shadow: none !important;
 }
 
 /* =========================================
@@ -129,7 +139,7 @@
 .budget-progress-card {
   padding: 24px;
   margin-bottom: 20px;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid #dbe3ee;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -144,21 +154,23 @@
 
 .budget-progress-header h2 {
   margin: 0;
-  color: #1e293b;
+  color: #1e293b !important;
   font-size: 18px;
 }
 
 .budget-progress-header p {
   margin: 6px 0 0;
-  color: #64748b;
+  color: #475569 !important;
   font-size: 13px;
 }
 
 .budget-progress-header > strong {
   color: #2563eb !important;
+  -webkit-text-fill-color: #2563eb !important;
   font-size: 18px;
   font-weight: 700;
   opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .budget-progress-track {
@@ -181,12 +193,13 @@
   display: flex;
   justify-content: space-between;
   margin-top: 9px;
-  color: #64748b;
   font-size: 12px;
 }
 
 .budget-progress-footer span {
-  color: #64748b !important;
+  color: #475569 !important;
+  -webkit-text-fill-color: #475569 !important;
+  opacity: 1 !important;
 }
 
 /* =========================================
@@ -194,7 +207,7 @@
 ========================================= */
 
 .category-budget-container {
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid #dbe3ee;
   border-radius: 14px;
   overflow: hidden;
@@ -208,13 +221,13 @@
 
 .category-budget-header h2 {
   margin: 0;
-  color: #1e293b;
+  color: #1e293b !important;
   font-size: 18px;
 }
 
 .category-budget-header p {
   margin: 6px 0 0;
-  color: #64748b;
+  color: #64748b !important;
   font-size: 13px;
 }
 
@@ -252,13 +265,13 @@
 
 .category-budget-info h3 {
   margin: 0;
-  color: #1e293b;
+  color: #1e293b !important;
   font-size: 14px;
 }
 
 .category-budget-info p {
   margin: 4px 0 0;
-  color: #64748b;
+  color: #64748b !important;
   font-size: 12px;
 }
 
@@ -284,7 +297,8 @@
 
 .category-budget-progress > span {
   width: 38px;
-  color: #475569 !important;
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155 !important;
   font-size: 12px;
   font-weight: 600;
   text-align: right;
@@ -303,7 +317,8 @@
 }
 
 .category-budget-remaining strong {
-  color: #1e293b !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
   font-size: 13px;
   font-weight: 700;
   opacity: 1 !important;
@@ -348,13 +363,13 @@
 }
 
 .budget-alert strong {
-  color: #92400e;
+  color: #92400e !important;
   font-size: 14px;
 }
 
 .budget-alert p {
   margin: 4px 0 0;
-  color: #a16207;
+  color: #a16207 !important;
   font-size: 13px;
 }
 
@@ -378,7 +393,7 @@
   width: 100%;
   max-width: 430px;
   padding: 24px;
-  background: #ffffff;
+  background: #ffffff !important;
   border: 1px solid #dbe3ee;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
@@ -394,13 +409,13 @@
 
 .budget-modal-header h2 {
   margin: 0;
-  color: #1e293b;
+  color: #1e293b !important;
   font-size: 19px;
 }
 
 .budget-modal-header p {
   margin: 6px 0 0;
-  color: #64748b;
+  color: #64748b !important;
   font-size: 13px;
 }
 
@@ -423,7 +438,7 @@
 .budget-modal form > label {
   display: block;
   margin-bottom: 7px;
-  color: #334155;
+  color: #334155 !important;
   font-size: 13px;
   font-weight: 600;
 }
@@ -455,7 +470,7 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #1e293b;
+  color: #1e293b !important;
   font-family: inherit;
   font-size: 14px;
 }
@@ -485,7 +500,7 @@
 .budget-cancel-button {
   border: 1px solid #cbd5e1;
   background: #ffffff;
-  color: #475569;
+  color: #475569 !important;
 }
 
 .budget-cancel-button:hover {
@@ -495,7 +510,7 @@
 .budget-save-button {
   border: none;
   background: #2563eb;
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 .budget-save-button:hover {
@@ -507,7 +522,6 @@
 ========================================= */
 
 @media (max-width: 900px) {
-
   .budget-overview-grid {
     grid-template-columns: 1fr;
   }
@@ -527,7 +541,6 @@
 }
 
 @media (max-width: 600px) {
-
   .budget-page-header {
     flex-direction: column;
     align-items: stretch;
