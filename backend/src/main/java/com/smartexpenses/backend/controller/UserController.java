@@ -30,7 +30,7 @@ public class UserController {
     }
 
     // =========================================
-    // GET CURRENT USER PROFILE
+    // GET PROFILE
     // =========================================
 
     @GetMapping("/profile")
@@ -39,6 +39,12 @@ public class UserController {
     ) {
 
         try {
+
+            if (principal == null) {
+                return ResponseEntity
+                        .status(HttpStatus.UNAUTHORIZED)
+                        .body("Authentication required");
+            }
 
             User user =
                     userService
@@ -64,7 +70,7 @@ public class UserController {
     }
 
     // =========================================
-    // UPDATE PROFILE
+    // UPDATE PROFILE NAME
     // =========================================
 
     @PutMapping("/profile")
@@ -74,6 +80,12 @@ public class UserController {
     ) {
 
         try {
+
+            if (principal == null) {
+                return ResponseEntity
+                        .status(HttpStatus.UNAUTHORIZED)
+                        .body("Authentication required");
+            }
 
             if (
                     request.getName() == null ||
@@ -87,26 +99,28 @@ public class UserController {
                         );
             }
 
-            if (
-                    request.getEmail() == null ||
-                    request.getEmail().trim().isEmpty()
-            ) {
-
-                return ResponseEntity
-                        .badRequest()
-                        .body(
-                                "Email cannot be empty"
-                        );
-            }
-
             String currentEmail =
                     principal.getName();
+
+            User currentUser =
+                    userService
+                            .findByEmail(
+                                    currentEmail
+                            )
+                            .orElseThrow(
+                                    () -> new RuntimeException(
+                                            "User not found"
+                                    )
+                            );
+
+            String emailToKeep =
+                    currentUser.getEmail();
 
             User savedUser =
                     userService.updateProfile(
                             currentEmail,
-                            request.getName(),
-                            request.getEmail()
+                            request.getName().trim(),
+                            emailToKeep
                     );
 
             String newToken =
@@ -142,6 +156,12 @@ public class UserController {
     ) {
 
         try {
+
+            if (principal == null) {
+                return ResponseEntity
+                        .status(HttpStatus.UNAUTHORIZED)
+                        .body("Authentication required");
+            }
 
             if (
                     request.getCurrentPassword() == null ||
@@ -203,7 +223,6 @@ public class UserController {
     public static class ProfileUpdateRequest {
 
         private String name;
-        private String email;
 
         public ProfileUpdateRequest() {
         }
@@ -212,16 +231,10 @@ public class UserController {
             return name;
         }
 
-        public void setName(String name) {
+        public void setName(
+                String name
+        ) {
             this.name = name;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
         }
     }
 
@@ -261,7 +274,7 @@ public class UserController {
     }
 
     // =========================================
-    // SAFE USER RESPONSE
+    // USER RESPONSE
     // =========================================
 
     public static class UserResponse {
@@ -270,7 +283,9 @@ public class UserController {
         private String name;
         private String email;
 
-        public UserResponse(User user) {
+        public UserResponse(
+                User user
+        ) {
 
             this.id = user.getId();
             this.name = user.getName();
