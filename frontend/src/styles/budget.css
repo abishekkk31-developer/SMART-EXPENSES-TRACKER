@@ -578,3 +578,213 @@
     width: 100%;
   }
 }
+/* =========================================
+   THEME-AWARE BUDGET COLORS
+   LIGHT MODE DEFAULT
+========================================= */
+
+.budget-page {
+  --budget-page-bg: #ffffff;
+  --budget-card-bg: #ffffff;
+  --budget-border: #dbe3ee;
+
+  --budget-title: #1e293b;
+  --budget-text: #475569;
+  --budget-muted: #64748b;
+
+  --budget-track: #e2e8f0;
+  --budget-blue: #2563eb;
+
+  --budget-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* =========================================
+   APPLY LIGHT/DYNAMIC COLORS
+========================================= */
+
+.budget-page {
+  color: var(--budget-title) !important;
+}
+
+.budget-page-header h1,
+.budget-progress-header h2,
+.category-budget-header h2,
+.category-budget-info h3,
+.budget-modal-header h2 {
+  color: var(--budget-title) !important;
+  -webkit-text-fill-color: var(--budget-title) !important;
+  opacity: 1 !important;
+}
+
+.budget-page-header p,
+.budget-progress-header p,
+.category-budget-header p,
+.category-budget-info p,
+.budget-progress-footer span,
+.category-budget-remaining span {
+  color: var(--budget-muted) !important;
+  -webkit-text-fill-color: var(--budget-muted) !important;
+  opacity: 1 !important;
+}
+
+/* CARDS */
+
+.budget-overview-card,
+.budget-progress-card,
+.category-budget-container,
+.budget-modal {
+  background: var(--budget-card-bg) !important;
+  border-color: var(--budget-border) !important;
+  box-shadow: var(--budget-shadow) !important;
+}
+
+/* OVERVIEW LABELS */
+
+.budget-overview-card span {
+  color: var(--budget-muted) !important;
+  -webkit-text-fill-color: var(--budget-muted) !important;
+  opacity: 1 !important;
+}
+
+/* IMPORTANT: BUDGET NUMBERS */
+
+.budget-page .budget-overview-card strong,
+.budget-overview-card strong,
+.category-budget-remaining strong {
+  color: var(--budget-title) !important;
+  -webkit-text-fill-color: var(--budget-title) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* PROGRESS */
+
+.budget-progress-header > strong {
+  color: #3b82f6 !important;
+  -webkit-text-fill-color: #3b82f6 !important;
+  opacity: 1 !important;
+}
+
+.budget-progress-track,
+.category-progress-track {
+  background: var(--budget-track) !important;
+}
+
+/* BORDERS */
+
+.category-budget-header,
+.category-budget-row {
+  border-color: var(--budget-border) !important;
+}
+
+/* =========================================
+   DARK MODE
+========================================= */
+
+/* Supports data-theme="dark" */
+[data-theme="dark"] .budget-page,
+
+/* Supports class="dark" */
+.dark .budget-page,
+
+/* Supports class="dark-mode" */
+.dark-mode .budget-page,
+
+/* Supports body.dark */
+body.dark .budget-page,
+
+/* Supports body.dark-mode */
+body.dark-mode .budget-page {
+
+  --budget-page-bg: #0f172a;
+  --budget-card-bg: #1e293b;
+  --budget-border: #334155;
+
+  --budget-title: #f8fafc;
+  --budget-text: #cbd5e1;
+  --budget-muted: #94a3b8;
+
+  --budget-track: #475569;
+
+  --budget-shadow:
+    0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================
+   DARK MODE TEXT - EXTRA VISIBILITY
+========================================= */
+
+[data-theme="dark"] .budget-page .budget-overview-card strong,
+.dark .budget-page .budget-overview-card strong,
+.dark-mode .budget-page .budget-overview-card strong,
+body.dark .budget-page .budget-overview-card strong,
+body.dark-mode .budget-page .budget-overview-card strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+[data-theme="dark"] .budget-page .budget-progress-header h2,
+[data-theme="dark"] .budget-page .category-budget-header h2,
+[data-theme="dark"] .budget-page .category-budget-info h3,
+
+.dark .budget-page .budget-progress-header h2,
+.dark .budget-page .category-budget-header h2,
+.dark .budget-page .category-budget-info h3,
+
+.dark-mode .budget-page .budget-progress-header h2,
+.dark-mode .budget-page .category-budget-header h2,
+.dark-mode .budget-page .category-budget-info h3,
+
+body.dark .budget-page .budget-progress-header h2,
+body.dark .budget-page .category-budget-header h2,
+body.dark .budget-page .category-budget-info h3,
+
+body.dark-mode .budget-page .budget-progress-header h2,
+body.dark-mode .budget-page .category-budget-header h2,
+body.dark-mode .budget-page .category-budget-info h3 {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+}
+
+/* DARK MODE NORMAL TEXT */
+
+[data-theme="dark"] .budget-page p,
+[data-theme="dark"] .budget-page span,
+
+.dark .budget-page p,
+.dark .budget-page span,
+
+.dark-mode .budget-page p,
+.dark-mode .budget-page span,
+
+body.dark .budget-page p,
+body.dark .budget-page span,
+
+body.dark-mode .budget-page p,
+body.dark-mode .budget-page span {
+  color: #94a3b8;
+}
+
+/* BUT KEEP NUMBERS BRIGHT */
+
+[data-theme="dark"] .budget-page strong,
+.dark .budget-page strong,
+.dark-mode .budget-page strong,
+body.dark .budget-page strong,
+body.dark-mode .budget-page strong {
+  color: #f8fafc !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  opacity: 1 !important;
+}
+
+/* BLUE PERCENTAGE STAYS BLUE */
+
+[data-theme="dark"] .budget-page .budget-progress-header > strong,
+.dark .budget-page .budget-progress-header > strong,
+.dark-mode .budget-page .budget-progress-header > strong,
+body.dark .budget-page .budget-progress-header > strong,
+body.dark-mode .budget-page .budget-progress-header > strong {
+  color: #60a5fa !important;
+  -webkit-text-fill-color: #60a5fa !important;
+}
