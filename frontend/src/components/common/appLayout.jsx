@@ -1,20 +1,21 @@
-import Navbar from "./navbar";
-import Sidebar from "./sidebar";
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Sidebar from './sidebar';
+import Navbar from './navbar';
 
-function AppLayout({ children }) {
+export default function AppLayout() {
   return (
-    <div className="app-layout">
-      <Navbar />
+    <div className="flex min-h-screen bg-[#090b10] text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+      {/* Persistent Sidebar */}
+      <Sidebar />
 
-      <div className="app-body">
-        <Sidebar />
-
-        <main className="main-content">
-          {children}
+      {/* Main Content Viewport */}
+      <div className="flex-1 flex flex-col min-w-0">
+        <Navbar />
+        <main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-y-auto">
+          <Outlet />
         </main>
       </div>
     </div>
   );
 }
-
-export default AppLayout;
