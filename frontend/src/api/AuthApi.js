@@ -18,10 +18,7 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// ==========================================
 // LOGIN
-// ==========================================
-
 export const loginUser = async (loginData) => {
   const response = await API.post(
     "/api/auth/login",
@@ -31,10 +28,7 @@ export const loginUser = async (loginData) => {
   return response.data;
 };
 
-// ==========================================
 // REGISTER
-// ==========================================
-
 export const registerUser = async (registerData) => {
   const response = await API.post(
     "/api/auth/register",

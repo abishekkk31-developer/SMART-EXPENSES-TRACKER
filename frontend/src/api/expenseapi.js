@@ -15,20 +15,11 @@ const notifyExpensesUpdated = () => {
 // ==========================================
 
 export const getExpenses = async () => {
-  try {
-    const response =
-      await API.get("/expenses");
+  const response = await API.get(
+    "/api/expenses"
+  );
 
-    return response.data;
-
-  } catch (error) {
-    console.error(
-      "GET EXPENSES ERROR:",
-      error
-    );
-
-    throw error;
-  }
+  return response.data;
 };
 
 // ==========================================
@@ -38,25 +29,14 @@ export const getExpenses = async () => {
 export const addExpense = async (
   expenseData
 ) => {
-  try {
-    const response =
-      await API.post(
-        "/expenses",
-        expenseData
-      );
+  const response = await API.post(
+    "/api/expenses",
+    expenseData
+  );
 
-    notifyExpensesUpdated();
+  notifyExpensesUpdated();
 
-    return response.data;
-
-  } catch (error) {
-    console.error(
-      "ADD EXPENSE ERROR:",
-      error
-    );
-
-    throw error;
-  }
+  return response.data;
 };
 
 // ==========================================
@@ -67,25 +47,14 @@ export const updateExpense = async (
   id,
   expenseData
 ) => {
-  try {
-    const response =
-      await API.put(
-        `/expenses/${id}`,
-        expenseData
-      );
+  const response = await API.put(
+    `/api/expenses/${id}`,
+    expenseData
+  );
 
-    notifyExpensesUpdated();
+  notifyExpensesUpdated();
 
-    return response.data;
-
-  } catch (error) {
-    console.error(
-      "UPDATE EXPENSE ERROR:",
-      error
-    );
-
-    throw error;
-  }
+  return response.data;
 };
 
 // ==========================================
@@ -95,22 +64,11 @@ export const updateExpense = async (
 export const deleteExpense = async (
   id
 ) => {
-  try {
-    const response =
-      await API.delete(
-        `/expenses/${id}`
-      );
+  const response = await API.delete(
+    `/api/expenses/${id}`
+  );
 
-    notifyExpensesUpdated();
+  notifyExpensesUpdated();
 
-    return response.data;
-
-  } catch (error) {
-    console.error(
-      "DELETE EXPENSE ERROR:",
-      error
-    );
-
-    throw error;
-  }
+  return response.data;
 };
