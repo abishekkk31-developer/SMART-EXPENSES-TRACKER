@@ -25,7 +25,7 @@ function Profile() {
 
   const {
     user,
-    updateSession,
+    updateUser,
     logout,
   } = useAuth();
 
@@ -86,11 +86,10 @@ function Profile() {
           profile?.email || ""
         );
 
-        // Keep AuthContext synchronized
-        updateSession(
-          profile,
-          localStorage.getItem("token")
-        );
+        // Update AuthContext + localStorage
+        if (profile) {
+          updateUser(profile);
+        }
 
       } catch (err) {
         console.error(
@@ -108,6 +107,7 @@ function Profile() {
               "Failed to load profile."
         );
 
+        // Fallback to stored user
         setName(
           user?.name || ""
         );
@@ -122,6 +122,8 @@ function Profile() {
     };
 
     loadProfile();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ==========================================
@@ -140,32 +142,18 @@ function Profile() {
       setError(
         "Name cannot be empty."
       );
-
-      return;
-    }
-
-    if (!email.trim()) {
-      setError(
-        "Email cannot be empty."
-      );
-
       return;
     }
 
     try {
       setSavingProfile(true);
 
-      const result =
+      // Your backend currently updates name
+      // and returns UserResponse directly
+      const updatedUser =
         await updateProfile({
           name: name.trim(),
-          email: email.trim(),
         });
-
-      const updatedUser =
-        result?.user;
-
-      const newToken =
-        result?.token;
 
       if (!updatedUser) {
         throw new Error(
@@ -173,26 +161,17 @@ function Profile() {
         );
       }
 
-      if (!newToken) {
-        throw new Error(
-          "Server did not return a new authentication token."
-        );
-      }
-
+      // Update form state
       setName(
-        updatedUser.name || ""
+        updatedUser.name || name.trim()
       );
 
       setEmail(
-        updatedUser.email || ""
+        updatedUser.email || email
       );
 
-      // IMPORTANT:
-      // Update both AuthContext and token
-      updateSession(
-        updatedUser,
-        newToken
-      );
+      // Update AuthContext + localStorage
+      updateUser(updatedUser);
 
       setMessage(
         "Profile updated successfully!"
@@ -238,7 +217,6 @@ function Profile() {
       setError(
         "Please enter both current and new password."
       );
-
       return;
     }
 
@@ -246,7 +224,6 @@ function Profile() {
       setError(
         "New password must be at least 6 characters."
       );
-
       return;
     }
 
@@ -376,9 +353,11 @@ function Profile() {
       {error && (
 
         <div className="profile-message profile-error">
+
           {typeof error === "string"
             ? error
             : "Something went wrong."}
+
         </div>
 
       )}
@@ -408,9 +387,7 @@ function Profile() {
           </div>
 
           <form
-            onSubmit={
-              handleProfileSave
-            }
+            onSubmit={handleProfileSave}
           >
 
             {/* NAME */}
@@ -460,17 +437,8 @@ function Profile() {
                 <input
                   type="email"
                   value={email}
-                  onChange={(event) =>
-                    setEmail(
-                      event.target.value
-                    )
-                  }
-                  placeholder="Enter your email"
-                  disabled={
-                    loadingProfile ||
-                    savingProfile
-                  }
-                  required
+                  placeholder="Email cannot currently be changed"
+                  disabled
                 />
 
               </div>
@@ -521,9 +489,7 @@ function Profile() {
           </div>
 
           <form
-            onSubmit={
-              handlePasswordChange
-            }
+            onSubmit={handlePasswordChange}
           >
 
             {/* CURRENT PASSWORD */}
@@ -540,9 +506,7 @@ function Profile() {
 
                 <input
                   type="password"
-                  value={
-                    currentPassword
-                  }
+                  value={currentPassword}
                   onChange={(event) =>
                     setCurrentPassword(
                       event.target.value
@@ -573,9 +537,7 @@ function Profile() {
 
                 <input
                   type="password"
-                  value={
-                    newPassword
-                  }
+                  value={newPassword}
                   onChange={(event) =>
                     setNewPassword(
                       event.target.value
@@ -621,9 +583,7 @@ function Profile() {
         <div className="profile-actions-info">
 
           <div className="profile-action-icon">
-
             <Wallet size={20} />
-
           </div>
 
           <div>

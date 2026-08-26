@@ -1,17 +1,39 @@
 import API from "./AuthApi";
 
-// GET current user profile
+// ==========================================
+// GET PROFILE
+// ==========================================
+
 export const getProfile = async () => {
-  const response = await API.get("/auth/profile");
+  const response = await API.get("/api/auth/profile");
 
   return response.data;
 };
 
-// UPDATE current user profile
+// ==========================================
+// UPDATE PROFILE
+// ==========================================
+
 export const updateProfile = async (profileData) => {
   const response = await API.put(
-    "/auth/profile",
+    "/api/auth/profile",
     profileData
+  );
+
+  return response.data;
+};
+
+// ==========================================
+// CHANGE PASSWORD
+// ==========================================
+
+// Only use this after adding a matching
+// backend endpoint for /api/auth/password
+
+export const changePassword = async (passwordData) => {
+  const response = await API.put(
+    "/api/auth/password",
+    passwordData
   );
 
   return response.data;
