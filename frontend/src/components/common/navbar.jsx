@@ -7,6 +7,7 @@ import {
   X,
   Settings,
   LogOut,
+  Wallet,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
@@ -238,7 +239,6 @@ function Navbar() {
 
   const handleMobileSettings = () => {
     setShowMobileAccountMenu(false);
-
     navigate("/settings");
   };
 
@@ -254,14 +254,40 @@ function Navbar() {
     <header className="navbar">
 
       {/* =====================================
-          LEFT
+          BRAND
       ====================================== */}
 
       <div className="navbar-left">
 
-        <h1 className="navbar-title">
-          Smart Expense Tracker
-        </h1>
+        <button
+          type="button"
+          className="navbar-brand"
+          onClick={() =>
+            navigate("/dashboard")
+          }
+          aria-label="Go to dashboard"
+        >
+
+          <div className="navbar-brand-icon">
+            <Wallet
+              size={21}
+              strokeWidth={2.4}
+            />
+          </div>
+
+          <div className="navbar-brand-text">
+
+            <span className="navbar-brand-title">
+              Smart Expense Tracker
+            </span>
+
+            <span className="navbar-brand-subtitle">
+              Track • Plan • Spend Smarter
+            </span>
+
+          </div>
+
+        </button>
 
       </div>
 
@@ -282,6 +308,7 @@ function Navbar() {
             className="icon-button notification-button"
             aria-label="Notifications"
             onClick={() => {
+
               setShowNotifications(
                 (previous) =>
                   !previous
@@ -290,6 +317,7 @@ function Navbar() {
               setShowMobileAccountMenu(
                 false
               );
+
             }}
           >
 
@@ -309,15 +337,9 @@ function Navbar() {
 
           </button>
 
-          {/* =================================
-              NOTIFICATION DROPDOWN
-          ================================= */}
-
           {showNotifications && (
 
             <div className="notification-dropdown">
-
-              {/* HEADER */}
 
               <div className="notification-header">
 
@@ -371,8 +393,6 @@ function Navbar() {
                 </div>
 
               </div>
-
-              {/* LIST */}
 
               <div className="notification-list">
 
@@ -516,10 +536,6 @@ function Navbar() {
             </span>
 
           </button>
-
-          {/* =================================
-              MOBILE ACCOUNT MENU
-          ================================= */}
 
           {showMobileAccountMenu && (
 
