@@ -5,7 +5,9 @@ import API from "./AuthApi";
 // ==========================================
 
 export const getProfile = async () => {
-  const response = await API.get("/api/auth/profile");
+  const response = await API.get(
+    "/api/auth/profile"
+  );
 
   return response.data;
 };
@@ -14,10 +16,14 @@ export const getProfile = async () => {
 // UPDATE PROFILE
 // ==========================================
 
-export const updateProfile = async (profileData) => {
+export const updateProfile = async (
+  profileData
+) => {
   const response = await API.put(
     "/api/auth/profile",
-    profileData
+    {
+      name: profileData.name,
+    }
   );
 
   return response.data;
@@ -27,10 +33,9 @@ export const updateProfile = async (profileData) => {
 // CHANGE PASSWORD
 // ==========================================
 
-// Only use this after adding a matching
-// backend endpoint for /api/auth/password
-
-export const changePassword = async (passwordData) => {
+export const changePassword = async (
+  passwordData
+) => {
   const response = await API.put(
     "/api/auth/password",
     passwordData

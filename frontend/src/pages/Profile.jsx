@@ -69,62 +69,55 @@ function Profile() {
   // LOAD PROFILE
   // ==========================================
 
-  useEffect(() => {
-    const loadProfile = async () => {
-      try {
-        setLoadingProfile(true);
-        setError("");
+useEffect(() => {
+  // Immediately load data from AuthContext
+  // so the input is never empty while API loads
+  if (user) {
+    setName(user.name || "");
+    setEmail(user.email || "");
+  }
 
-        const profile =
-          await getProfile();
+  const loadProfile = async () => {
+    try {
+      setLoadingProfile(true);
+      setError("");
 
-        setName(
-          profile?.name || ""
-        );
+      const profile = await getProfile();
 
-        setEmail(
-          profile?.email || ""
-        );
+      if (profile) {
+        setName(profile.name || "");
+        setEmail(profile.email || "");
 
-        // Update AuthContext + localStorage
-        if (profile) {
-          updateUser(profile);
-        }
+        updateUser(profile);
+      }
 
-      } catch (err) {
-        console.error(
-          "Failed to load profile:",
-          err
-        );
+    } catch (err) {
+      console.error(
+        "Failed to load profile:",
+        err
+      );
 
+      // Keep existing AuthContext data.
+      // Do NOT erase the input fields if API fails.
+      if (!user) {
         const backendError =
           err.response?.data;
 
         setError(
           typeof backendError === "string"
             ? backendError
-            : err.message ||
-              "Failed to load profile."
+            : "Could not refresh profile from server."
         );
-
-        // Fallback to stored user
-        setName(
-          user?.name || ""
-        );
-
-        setEmail(
-          user?.email || ""
-        );
-
-      } finally {
-        setLoadingProfile(false);
       }
-    };
 
-    loadProfile();
+    } finally {
+      setLoadingProfile(false);
+    }
+  };
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  loadProfile();
+
+}, [user, updateUser]);
 
   // ==========================================
   // SAVE PROFILE
@@ -411,10 +404,7 @@ function Profile() {
                     )
                   }
                   placeholder="Enter your name"
-                  disabled={
-                    loadingProfile ||
-                    savingProfile
-                  }
+                  disabled={savingProfile}
                   required
                 />
 
