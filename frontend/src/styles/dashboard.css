@@ -588,3 +588,100 @@
     font-size: 26px;
   }
 }
+/* =========================================
+   MOBILE ADD EXPENSE BUTTON
+========================================= */
+
+@media (max-width: 600px) {
+  .dashboard-page .add-expense-button,
+  .dashboard-page .dashboard-add-button {
+    width: auto !important;
+    min-width: 150px;
+    height: 40px;
+    padding: 0 18px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    box-shadow:
+      0 5px 14px rgba(37, 99, 235, 0.2);
+  }
+}
+@media (max-width: 600px) {
+  .dashboard-page-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .dashboard-page-header h1 {
+    font-size: 24px;
+  }
+
+  .dashboard-page-header p {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+}
+/* =========================================
+   MOBILE DASHBOARD HEADER
+========================================= */
+
+@media (max-width: 600px) {
+
+  .dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+    line-height: 1.15;
+  }
+
+  .dashboard-header p {
+    font-size: 12px;
+    line-height: 1.4;
+    margin-top: 5px;
+  }
+
+  /* Compact Add Expense button */
+
+  .dashboard-header .add-expense-button {
+    width: auto !important;
+    min-width: 125px;
+    height: 38px;
+    padding: 0 14px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+      0 4px 12px rgba(37, 99, 235, 0.22);
+  }
+
+  .dashboard-header .add-expense-button svg {
+    width: 15px;
+    height: 15px;
+  }
+}

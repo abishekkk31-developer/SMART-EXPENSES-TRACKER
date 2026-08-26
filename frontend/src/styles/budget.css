@@ -788,3 +788,40 @@ body.dark-mode .budget-page .budget-progress-header > strong {
   color: #60a5fa !important;
   -webkit-text-fill-color: #60a5fa !important;
 }
+/* =========================================
+   MOBILE SET BUDGET BUTTON
+========================================= */
+
+@media (max-width: 600px) {
+  .budget-page-header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .budget-add-button {
+    width: auto !important;
+    min-width: 125px;
+    height: 40px;
+    padding: 0 15px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    box-shadow:
+      0 5px 14px rgba(37, 99, 235, 0.2);
+  }
+
+  .budget-add-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}
