@@ -1,11 +1,12 @@
 /* =========================================
-   BUDGET PAGE - DARK THEME
+   BUDGET PAGE
 ========================================= */
 
 .budget-page {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  color: #1e293b;
 }
 
 /* =========================================
@@ -22,14 +23,14 @@
 
 .budget-page-header h1 {
   margin: 0;
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 28px;
   font-weight: 700;
 }
 
 .budget-page-header p {
   margin: 6px 0 0;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 14px;
 }
 
@@ -38,7 +39,7 @@
   align-items: center;
   gap: 8px;
   height: 42px;
-  padding: 0 16px;
+  padding: 0 18px;
   border: none;
   border-radius: 9px;
   background: #2563eb;
@@ -47,6 +48,7 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
 
 .budget-add-button:hover {
@@ -69,9 +71,10 @@
   align-items: center;
   gap: 14px;
   padding: 20px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
   border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .budget-card-icon {
@@ -84,18 +87,18 @@
 }
 
 .budget-icon {
-  background: rgba(37, 99, 235, 0.15);
-  color: #60a5fa;
+  background: rgba(37, 99, 235, 0.12);
+  color: #2563eb;
 }
 
 .spent-icon {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
 }
 
 .remaining-icon {
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
 }
 
 .budget-overview-card div:last-child {
@@ -105,13 +108,18 @@
 }
 
 .budget-overview-card span {
-  color: #94a3b8;
+  color: #64748b !important;
   font-size: 13px;
 }
 
+/* THIS FIXES YOUR HIDDEN NUMBERS */
+
 .budget-overview-card strong {
-  color: #f8fafc;
+  color: #1e293b !important;
   font-size: 20px;
+  font-weight: 700;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* =========================================
@@ -121,9 +129,10 @@
 .budget-progress-card {
   padding: 24px;
   margin-bottom: 20px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
   border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .budget-progress-header {
@@ -135,19 +144,21 @@
 
 .budget-progress-header h2 {
   margin: 0;
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 18px;
 }
 
 .budget-progress-header p {
   margin: 6px 0 0;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
 }
 
 .budget-progress-header > strong {
-  color: #60a5fa;
+  color: #2563eb !important;
   font-size: 18px;
+  font-weight: 700;
+  opacity: 1 !important;
 }
 
 .budget-progress-track {
@@ -155,7 +166,7 @@
   height: 10px;
   margin-top: 20px;
   overflow: hidden;
-  background: #334155;
+  background: #e2e8f0;
   border-radius: 999px;
 }
 
@@ -170,8 +181,12 @@
   display: flex;
   justify-content: space-between;
   margin-top: 9px;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 12px;
+}
+
+.budget-progress-footer span {
+  color: #64748b !important;
 }
 
 /* =========================================
@@ -179,26 +194,27 @@
 ========================================= */
 
 .category-budget-container {
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
   border-radius: 14px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .category-budget-header {
   padding: 22px;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .category-budget-header h2 {
   margin: 0;
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 18px;
 }
 
 .category-budget-header p {
   margin: 6px 0 0;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
 }
 
@@ -208,7 +224,7 @@
   align-items: center;
   gap: 20px;
   padding: 18px 22px;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 .category-budget-row:last-child {
@@ -230,19 +246,19 @@
   justify-content: center;
   flex-shrink: 0;
   border-radius: 10px;
-  background: #334155;
-  color: #cbd5e1;
+  background: #eff6ff;
+  color: #2563eb;
 }
 
 .category-budget-info h3 {
   margin: 0;
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 14px;
 }
 
 .category-budget-info p {
   margin: 4px 0 0;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 12px;
 }
 
@@ -256,7 +272,7 @@
   flex: 1;
   height: 7px;
   overflow: hidden;
-  background: #334155;
+  background: #e2e8f0;
   border-radius: 999px;
 }
 
@@ -268,8 +284,9 @@
 
 .category-budget-progress > span {
   width: 38px;
-  color: #94a3b8;
+  color: #475569 !important;
   font-size: 12px;
+  font-weight: 600;
   text-align: right;
 }
 
@@ -281,14 +298,20 @@
 }
 
 .category-budget-remaining span {
-  color: #94a3b8;
+  color: #64748b !important;
   font-size: 11px;
 }
 
 .category-budget-remaining strong {
-  color: #f8fafc;
+  color: #1e293b !important;
   font-size: 13px;
+  font-weight: 700;
+  opacity: 1 !important;
 }
+
+/* =========================================
+   CATEGORY MENU
+========================================= */
 
 .category-budget-menu {
   width: 34px;
@@ -299,13 +322,13 @@
   border: none;
   border-radius: 7px;
   background: transparent;
-  color: #94a3b8;
+  color: #64748b;
   cursor: pointer;
 }
 
 .category-budget-menu:hover {
-  background: #334155;
-  color: #f8fafc;
+  background: #f1f5f9;
+  color: #1e293b;
 }
 
 /* =========================================
@@ -318,19 +341,20 @@
   gap: 12px;
   margin-top: 20px;
   padding: 16px;
-  border: 1px solid #92400e;
+  border: 1px solid #fbbf24;
   border-radius: 12px;
-  background: rgba(146, 64, 14, 0.15);
-  color: #fbbf24;
+  background: #fffbeb;
+  color: #b45309;
 }
 
 .budget-alert strong {
+  color: #92400e;
   font-size: 14px;
 }
 
 .budget-alert p {
   margin: 4px 0 0;
-  color: #fcd34d;
+  color: #a16207;
   font-size: 13px;
 }
 
@@ -346,7 +370,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  background: rgba(2, 6, 23, 0.75);
+  background: rgba(15, 23, 42, 0.55);
   backdrop-filter: blur(4px);
 }
 
@@ -354,10 +378,10 @@
   width: 100%;
   max-width: 430px;
   padding: 24px;
-  background: #1e293b;
-  border: 1px solid #334155;
+  background: #ffffff;
+  border: 1px solid #dbe3ee;
   border-radius: 16px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 .budget-modal-header {
@@ -370,13 +394,13 @@
 
 .budget-modal-header h2 {
   margin: 0;
-  color: #f8fafc;
+  color: #1e293b;
   font-size: 19px;
 }
 
 .budget-modal-header p {
   margin: 6px 0 0;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 13px;
 }
 
@@ -386,20 +410,20 @@
   border: none;
   border-radius: 7px;
   background: transparent;
-  color: #94a3b8;
+  color: #64748b;
   font-size: 22px;
   cursor: pointer;
 }
 
 .budget-modal-header button:hover {
-  background: #334155;
-  color: #f8fafc;
+  background: #f1f5f9;
+  color: #1e293b;
 }
 
 .budget-modal form > label {
   display: block;
   margin-bottom: 7px;
-  color: #cbd5e1;
+  color: #334155;
   font-size: 13px;
   font-weight: 600;
 }
@@ -408,20 +432,20 @@
   display: flex;
   align-items: center;
   height: 44px;
-  background: #0f172a;
-  border: 1px solid #475569;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 9px;
   overflow: hidden;
 }
 
 .budget-input-wrapper:focus-within {
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .budget-input-wrapper span {
   padding-left: 13px;
-  color: #94a3b8;
+  color: #64748b;
 }
 
 .budget-input-wrapper input {
@@ -431,10 +455,14 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #f8fafc;
+  color: #1e293b;
   font-family: inherit;
   font-size: 14px;
 }
+
+/* =========================================
+   MODAL BUTTONS
+========================================= */
 
 .budget-modal-actions {
   display: flex;
@@ -455,13 +483,13 @@
 }
 
 .budget-cancel-button {
-  border: 1px solid #475569;
-  background: #1e293b;
-  color: #cbd5e1;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
 }
 
 .budget-cancel-button:hover {
-  background: #334155;
+  background: #f1f5f9;
 }
 
 .budget-save-button {
@@ -479,6 +507,7 @@
 ========================================= */
 
 @media (max-width: 900px) {
+
   .budget-overview-grid {
     grid-template-columns: 1fr;
   }
@@ -498,6 +527,7 @@
 }
 
 @media (max-width: 600px) {
+
   .budget-page-header {
     flex-direction: column;
     align-items: stretch;
