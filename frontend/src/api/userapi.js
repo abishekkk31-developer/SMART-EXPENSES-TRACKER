@@ -5,8 +5,9 @@ import API from "./AuthApi";
 // ==========================================
 
 export const getProfile = async () => {
-  const response =
-    await API.get("/user/profile");
+  const response = await API.get(
+    "/api/user/profile"
+  );
 
   return response.data;
 };
@@ -18,11 +19,13 @@ export const getProfile = async () => {
 export const updateProfile = async (
   profileData
 ) => {
-  const response =
-    await API.put(
-      "/user/profile",
-      profileData
-    );
+  const response = await API.put(
+    "/api/user/profile",
+    {
+      name: profileData.name,
+      email: profileData.email,
+    }
+  );
 
   return response.data;
 };
@@ -34,11 +37,16 @@ export const updateProfile = async (
 export const changePassword = async (
   passwordData
 ) => {
-  const response =
-    await API.put(
-      "/user/password",
-      passwordData
-    );
+  const response = await API.put(
+    "/api/user/password",
+    {
+      currentPassword:
+        passwordData.currentPassword,
+
+      newPassword:
+        passwordData.newPassword,
+    }
+  );
 
   return response.data;
 };
