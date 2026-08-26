@@ -66,130 +66,129 @@ function Profile() {
     useState("");
 
   // ==========================================
-  // LOAD PROFILE
+  // LOAD PROFILE - ONLY ONCE
   // ==========================================
 
-useEffect(() => {
-  // Immediately load data from AuthContext
-  // so the input is never empty while API loads
-  if (user) {
-    setName(user.name || "");
-    setEmail(user.email || "");
-  }
+  useEffect(() => {
+    const loadProfile = async () => {
+      try {
+        setLoadingProfile(true);
+        setError("");
 
-  const loadProfile = async () => {
-    try {
-      setLoadingProfile(true);
-      setError("");
+        const profile =
+          await getProfile();
 
-      const profile = await getProfile();
+        if (profile) {
+          setName(profile.name || "");
+          setEmail(profile.email || "");
+        }
 
-      if (profile) {
-        setName(profile.name || "");
-        setEmail(profile.email || "");
-
-        updateUser(profile);
-      }
-
-    } catch (err) {
-      console.error(
-        "Failed to load profile:",
-        err
-      );
-
-      // Keep existing AuthContext data.
-      // Do NOT erase the input fields if API fails.
-      if (!user) {
-        const backendError =
-          err.response?.data;
-
-        setError(
-          typeof backendError === "string"
-            ? backendError
-            : "Could not refresh profile from server."
+      } catch (err) {
+        console.error(
+          "Failed to load profile:",
+          err
         );
+
+        // If API fails, use AuthContext data
+        if (user) {
+          setName(user.name || "");
+          setEmail(user.email || "");
+        } else {
+          const backendError =
+            err.response?.data;
+
+          setError(
+            typeof backendError === "string"
+              ? backendError
+              : "Could not load profile."
+          );
+        }
+
+      } finally {
+        setLoadingProfile(false);
       }
+    };
 
-    } finally {
-      setLoadingProfile(false);
-    }
-  };
+    loadProfile();
 
-  loadProfile();
-
-}, [user, updateUser]);
+  }, []);
 
   // ==========================================
   // SAVE PROFILE
   // ==========================================
 
   const handleProfileSave = async (
-    event
-  ) => {
-    event.preventDefault();
+  event
+) => {
+  event.preventDefault();
 
-    setMessage("");
-    setError("");
+  setMessage("");
+  setError("");
 
-    if (!name.trim()) {
-      setError(
-        "Name cannot be empty."
+  if (!name.trim()) {
+    setError("Name cannot be empty.");
+    return;
+  }
+
+  try {
+    setSavingProfile(true);
+
+    const response = await updateProfile({
+      name: name.trim(),
+      email: email.trim(),
+    });
+
+    console.log(
+      "PROFILE UPDATE RESPONSE:",
+      response
+    );
+
+    const updatedUser = response.user;
+
+    if (!updatedUser) {
+      throw new Error(
+        "Invalid profile response."
       );
-      return;
     }
 
-    try {
-      setSavingProfile(true);
-
-      // Your backend currently updates name
-      // and returns UserResponse directly
-      const updatedUser =
-        await updateProfile({
-          name: name.trim(),
-        });
-
-      if (!updatedUser) {
-        throw new Error(
-          "Invalid profile response from server."
-        );
-      }
-
-      // Update form state
-      setName(
-        updatedUser.name || name.trim()
+    // Save new JWT token
+    if (response.token) {
+      localStorage.setItem(
+        "token",
+        response.token
       );
-
-      setEmail(
-        updatedUser.email || email
-      );
-
-      // Update AuthContext + localStorage
-      updateUser(updatedUser);
-
-      setMessage(
-        "Profile updated successfully!"
-      );
-
-    } catch (err) {
-      console.error(
-        "Failed to update profile:",
-        err
-      );
-
-      const backendError =
-        err.response?.data;
-
-      setError(
-        typeof backendError === "string"
-          ? backendError
-          : err.message ||
-            "Failed to update profile."
-      );
-
-    } finally {
-      setSavingProfile(false);
     }
-  };
+
+    // Update displayed profile
+    setName(updatedUser.name || "");
+    setEmail(updatedUser.email || "");
+
+    // Update AuthContext
+    updateUser(updatedUser);
+
+    setMessage(
+      "Profile updated successfully!"
+    );
+
+  } catch (err) {
+    console.error(
+      "Failed to update profile:",
+      err
+    );
+
+    const backendError =
+      err.response?.data;
+
+    setError(
+      typeof backendError === "string"
+        ? backendError
+        : "Failed to update profile."
+    );
+
+  } finally {
+    setSavingProfile(false);
+  }
+};
 
   // ==========================================
   // CHANGE PASSWORD
@@ -262,7 +261,6 @@ useEffect(() => {
 
   const handleLogout = () => {
     logout();
-
     navigate("/");
   };
 
@@ -287,12 +285,8 @@ useEffect(() => {
   return (
     <div className="profile-page">
 
-      {/* HEADER */}
-
       <div className="profile-header">
-
         <div>
-
           <h1>
             Profile & Settings
           </h1>
@@ -300,9 +294,7 @@ useEffect(() => {
           <p>
             Manage your account and preferences.
           </p>
-
         </div>
-
       </div>
 
       {/* PROFILE OVERVIEW */}
@@ -310,15 +302,12 @@ useEffect(() => {
       <div className="profile-overview">
 
         <div className="profile-avatar">
-
           {displayName
             ?.charAt(0)
             ?.toUpperCase() || "U"}
-
         </div>
 
         <div>
-
           <h2>
             {displayName}
           </h2>
@@ -326,33 +315,26 @@ useEffect(() => {
           <p>
             {displayEmail}
           </p>
-
         </div>
 
       </div>
 
-      {/* SUCCESS MESSAGE */}
+      {/* SUCCESS */}
 
       {message && (
-
         <div className="profile-message">
           {message}
         </div>
-
       )}
 
-      {/* ERROR MESSAGE */}
+      {/* ERROR */}
 
       {error && (
-
         <div className="profile-message profile-error">
-
           {typeof error === "string"
             ? error
             : "Something went wrong."}
-
         </div>
-
       )}
 
       <div className="profile-grid">
@@ -366,7 +348,6 @@ useEffect(() => {
             <User size={20} />
 
             <div>
-
               <h2>
                 Personal Information
               </h2>
@@ -374,7 +355,6 @@ useEffect(() => {
               <p>
                 Update your account details.
               </p>
-
             </div>
 
           </div>
@@ -427,7 +407,6 @@ useEffect(() => {
                 <input
                   type="email"
                   value={email}
-                  placeholder="Email cannot currently be changed"
                   disabled
                 />
 
@@ -465,7 +444,6 @@ useEffect(() => {
             <Lock size={20} />
 
             <div>
-
               <h2>
                 Change Password
               </h2>
@@ -473,7 +451,6 @@ useEffect(() => {
               <p>
                 Keep your account secure.
               </p>
-
             </div>
 
           </div>
@@ -481,8 +458,6 @@ useEffect(() => {
           <form
             onSubmit={handlePasswordChange}
           >
-
-            {/* CURRENT PASSWORD */}
 
             <div className="profile-input-group">
 
@@ -503,17 +478,13 @@ useEffect(() => {
                     )
                   }
                   placeholder="Enter current password"
-                  disabled={
-                    changingPassword
-                  }
+                  disabled={changingPassword}
                   required
                 />
 
               </div>
 
             </div>
-
-            {/* NEW PASSWORD */}
 
             <div className="profile-input-group">
 
@@ -534,9 +505,7 @@ useEffect(() => {
                     )
                   }
                   placeholder="Enter new password"
-                  disabled={
-                    changingPassword
-                  }
+                  disabled={changingPassword}
                   required
                 />
 
@@ -547,9 +516,7 @@ useEffect(() => {
             <button
               type="submit"
               className="profile-save-button"
-              disabled={
-                changingPassword
-              }
+              disabled={changingPassword}
             >
 
               <Lock size={17} />
@@ -566,7 +533,7 @@ useEffect(() => {
 
       </div>
 
-      {/* ACCOUNT ACTIONS */}
+      {/* ACCOUNT */}
 
       <div className="profile-actions-card">
 
@@ -577,7 +544,6 @@ useEffect(() => {
           </div>
 
           <div>
-
             <h2>
               Account
             </h2>
@@ -585,7 +551,6 @@ useEffect(() => {
             <p>
               Manage your account session.
             </p>
-
           </div>
 
         </div>

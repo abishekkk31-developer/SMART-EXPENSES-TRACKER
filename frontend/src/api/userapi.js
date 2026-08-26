@@ -6,7 +6,7 @@ import API from "./AuthApi";
 
 export const getProfile = async () => {
   const response = await API.get(
-    "/api/auth/profile"
+    "/api/user/profile"
   );
 
   return response.data;
@@ -20,9 +20,10 @@ export const updateProfile = async (
   profileData
 ) => {
   const response = await API.put(
-    "/api/auth/profile",
+    "/api/user/profile",
     {
       name: profileData.name,
+      email: profileData.email,
     }
   );
 
@@ -37,8 +38,14 @@ export const changePassword = async (
   passwordData
 ) => {
   const response = await API.put(
-    "/api/auth/password",
-    passwordData
+    "/api/user/password",
+    {
+      currentPassword:
+        passwordData.currentPassword,
+
+      newPassword:
+        passwordData.newPassword,
+    }
   );
 
   return response.data;
