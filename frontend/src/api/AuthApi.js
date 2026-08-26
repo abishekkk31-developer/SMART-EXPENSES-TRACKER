@@ -7,36 +7,19 @@ const API = axios.create({
   },
 });
 
-API.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("token");
+// Automatically attach JWT token
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
 
-    console.log(
-      "API Request:",
-      config.method?.toUpperCase(),
-      config.baseURL + config.url
-    );
-
-    console.log(
-      "JWT Token exists:",
-      !!token
-    );
-
-    if (token) {
-      config.headers.Authorization =
-        `Bearer ${token}`;
-    }
-
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
   }
-);
 
-export const loginUser = async (
-  loginData
-) => {
+  return config;
+});
+
+// LOGIN
+export const loginUser = async (loginData) => {
   const response = await API.post(
     "/api/auth/login",
     loginData
@@ -45,9 +28,8 @@ export const loginUser = async (
   return response.data;
 };
 
-export const registerUser = async (
-  registerData
-) => {
+// REGISTER
+export const registerUser = async (registerData) => {
   const response = await API.post(
     "/api/auth/register",
     registerData
